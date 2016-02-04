@@ -6,8 +6,9 @@
  * Time: 08:47
  */
 
+namespace PN_PostType;
 
-class PN_Meta_Box_ProjectFields{
+class Fields{
 
 
     public $id;
@@ -18,11 +19,11 @@ class PN_Meta_Box_ProjectFields{
 
     public function __construct()
     {
-        $this->id = 'ch_project_fields';
-        $this->title = __('Project fields', 'wa');
+        $this->id = 'pn_posttype_fields';
+        $this->title = __('Post type fields', 'pn');
         $this->context = 'side';
         $this->priority = 'default';
-        $this->post_types = array('ch_project');
+        $this->post_types = array('pn_posttype');
 
         add_action('save_post', array($this, 'meta_box_save'), 10, 1);
 
@@ -38,7 +39,7 @@ class PN_Meta_Box_ProjectFields{
         <div class="row">
             <div>
                 <label for="_ch_project_url">
-                    <?php echo __('Project url', 'wa'); ?>
+                    <?php echo __('Project url', 'pn'); ?>
                 </label>
                 <input class="text" value="<?php echo get_post_meta($post_id, '_ch_project_url', true); ?>" name="_ch_project_url">
             </div>

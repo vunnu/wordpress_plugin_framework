@@ -6,6 +6,7 @@
  * Time: 10:57
  */
 
+
 class PN_Column{
 
     public function __construct() {
@@ -20,7 +21,7 @@ class PN_Column{
      */
     public function include_columns_handlers() {
 
-        include('pn_some_functionality/PN_Columns.php');
+        include('pn_some_functionality/Functionality.php');
 
     }
 

@@ -6,8 +6,9 @@
  * Time: 15:07
  */
 
+namespace PN_PostType;
 
-class PN_Filter_ProjectTasks{
+class FunctionalityFilter{
 
     private $post_type;
 
@@ -32,7 +33,7 @@ class PN_Filter_ProjectTasks{
             $projects = PN_Project::get_list();
 
             echo '<select name="project_id">';
-            echo '<option value="">' . __( 'All projects', 'wa' ) . '</option>';
+            echo '<option value="">' . __( 'All projects', 'pn' ) . '</option>';
             foreach( $projects as $project ) {
                 $selected = ( !empty( $_GET['project_id'] ) AND $_GET['project_id'] == $project->post->ID ) ? 'selected="selected"' : '';
                 echo '<option value="'.$project->post->ID.'" '.$selected.'>' . $project->post->post_title . '</option>';
@@ -62,4 +63,4 @@ class PN_Filter_ProjectTasks{
     }
 }
 
-return new PN_Filter_ProjectTasks();
+return new FunctionalityFilter();

@@ -6,8 +6,9 @@
  * Time: 15:07
  */
 
+namespace PN_PostType;
 
-class PN_Column_TaskProject{
+class Functionality{
 
     private $post_type;
 
@@ -23,7 +24,7 @@ class PN_Column_TaskProject{
 
     public function ch_manage_project_task_posts_columns($defaults)
     {
-        $defaults['ch_project'] = __('Project', 'wa');
+        $defaults['ch_project'] = __('Project', 'pn');
 
         return $defaults;
     }
@@ -45,4 +46,4 @@ class PN_Column_TaskProject{
 
 }
 
-return new PN_Column_TaskProject();
+return new Functionality();

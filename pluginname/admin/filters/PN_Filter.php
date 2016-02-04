@@ -8,8 +8,6 @@
 
 class PN_Filter{
 
-    private $name = 'pn_some_functionality';
-
 	public function __construct() {
 
 		add_action( 'admin_init', array( $this, 'include_filter_handlers' ) );
@@ -22,8 +20,7 @@ class PN_Filter{
 	 */
 	public function include_filter_handlers() {
 
-
-		include($this->name . '/PN_Filters.php');
+		include('pn_post_type/FunctionalityFilter.php');
 	}
 
 

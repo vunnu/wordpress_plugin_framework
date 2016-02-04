@@ -8,11 +8,16 @@
 
 class PN_Metabox{
 
+	private $meta_boxes = array();
+
 	public function __construct()
     {
 
-		add_action( 'admin_init', array( $this, 'include_meta_box_handlers' ) );
+		$this->meta_boxes[] = include('pn_post_type/Fields.php');
+
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'styles_and_scripts' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 1 );
 	}
 
 
@@ -22,17 +27,27 @@ class PN_Metabox{
 	public function styles_and_scripts()
     {
 
-		global $post, $woocommerce, $wp_scripts;
+		global $post, $wp_scripts;
 	}
 
+
 	/**
-	 * Include meta box handlers
+	 * Add meta boxes to edit product page
 	 */
-	public function include_meta_box_handlers()
-    {
+	public function add_meta_boxes() {
 
-		include('pn_some_functionality/PN_Meta_Boxes.php');
-
+		foreach ( $this->meta_boxes as $meta_box ) {
+			foreach ( $meta_box->post_types as $post_type ) {
+				add_meta_box(
+					$meta_box->id,
+					$meta_box->title,
+					array( $meta_box, 'meta_box_inner' ),
+					$post_type,
+					$meta_box->context,
+					$meta_box->priority
+				);
+			}
+		}
 	}
 
 

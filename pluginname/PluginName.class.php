@@ -1,6 +1,6 @@
 <?php
 
-define('PLUGINNAME_VERSION', '1.4.9');
+define('PLUGINNAME_VERSION', '1.0.2');
 define('PLUGINNAME_BASE', plugin_dir_path(__FILE__));
 define('PLUGINNAME_BASE_URL', plugin_dir_url(__FILE__));
 define('PLUGINNAME_TEMPLATE_PATH', plugin_dir_path(__FILE__) . 'templates/');
