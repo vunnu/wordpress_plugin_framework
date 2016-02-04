@@ -1,6 +1,7 @@
 <?php
 
 define('PLUGINNAME_VERSION', '1.0.2');
+define('PLUGINNAME_DOMAIN', 'pluginname');
 define('PLUGINNAME_BASE', plugin_dir_path(__FILE__));
 define('PLUGINNAME_BASE_URL', plugin_dir_url(__FILE__));
 define('PLUGINNAME_TEMPLATE_PATH', plugin_dir_path(__FILE__) . 'templates/');
@@ -49,9 +50,12 @@ class PluginName{
 
     function post_admin_scripts()
     {
-        global $post_type;
+        /*
+         * Custom scripts for post type admin pages
+         */
 
-//        if (in_array($post_type, array('fund', 'document', 'fund_manager', 'fund_customer', 'chart'))) {
+//        global $post_type;
+//        if (in_array($post_type, array())) {
 //
 //            wp_register_style('bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', array(), '1.0', 'all');
 //            wp_enqueue_style('bootstrap'); // Enqueue it!
@@ -64,8 +68,11 @@ class PluginName{
     {
         if(is_admin())
         {
-            wp_register_script('jscolor', PLUGINNAME_RESOURCES_URL . '../components/jscolor/jscolor.js', array('jquery'), '1.0.0');
-            wp_enqueue_script('jscolor');
+            /**
+             * admin scripts here
+             * wp_register_script('', PLUGINNAME_RESOURCES_URL . '../components/../', array(''), '');
+             * wp_enqueue_script('');
+             */
         }
     }
 
@@ -76,20 +83,20 @@ class PluginName{
 
         // Add new custom post type
         $labels = array(
-            'name' => _x('Room', 'Room plural name', 'wa'),
-            'singular_name' => _x('Room', 'Room singular name', 'wa'),
-            'menu_name' => _x('Rooms', 'admin menu', 'wa'),
-            'name_admin_bar' => _x('Room', 'add new on admin bar', 'wa'),
-            'add_new' => _x('Add New', 'fund', 'wa'),
-            'add_new_item' => __('Add New Room', 'wa'),
-            'new_item' => __('New Room', 'wa'),
-            'edit_item' => __('Edit Room', 'wa'),
-            'view_item' => __('View Room', 'wa'),
-            'all_items' => __('Our Rooms', 'wa'),
-            'search_items' => __('Search Room', 'wa'),
-            'parent_item_colon' => __('Parent Room:', 'wa'),
-            'not_found' => __('No funds found.', 'wa'),
-            'not_found_in_trash' => __('No funds found in Trash.', 'wa')
+            'name' => _x('Room', 'Room plural name', PLUGINNAME_DOMAIN),
+            'singular_name' => _x('Room', 'Room singular name', PLUGINNAME_DOMAIN),
+            'menu_name' => _x('Rooms', 'admin menu', PLUGINNAME_DOMAIN),
+            'name_admin_bar' => _x('Room', 'add new on admin bar', PLUGINNAME_DOMAIN),
+            'add_new' => _x('Add New', 'fund', PLUGINNAME_DOMAIN),
+            'add_new_item' => __('Add New Room', PLUGINNAME_DOMAIN),
+            'new_item' => __('New Room', PLUGINNAME_DOMAIN),
+            'edit_item' => __('Edit Room', PLUGINNAME_DOMAIN),
+            'view_item' => __('View Room', PLUGINNAME_DOMAIN),
+            'all_items' => __('Our Rooms', PLUGINNAME_DOMAIN),
+            'search_items' => __('Search Room', PLUGINNAME_DOMAIN),
+            'parent_item_colon' => __('Parent Room:', PLUGINNAME_DOMAIN),
+            'not_found' => __('No funds found.', PLUGINNAME_DOMAIN),
+            'not_found_in_trash' => __('No funds found in Trash.', PLUGINNAME_DOMAIN)
         );
 
         $args = array(
@@ -99,7 +106,7 @@ class PluginName{
             'show_ui' => true,
             'show_in_menu' => true,
             'query_var' => true,
-            'rewrite' => array('slug' => __('room', 'wa')),
+            'rewrite' => array('slug' => __('room', PLUGINNAME_DOMAIN)),
             'capability_type' => 'post',
             'has_archive' => true,
             'hierarchical' => false,
@@ -113,22 +120,22 @@ class PluginName{
 
         // Add new taxonomy, NOT hierarchical (like tags)
         $labels = array(
-            'name'                       => _x( 'Room type', 'taxonomy general name', 'wa' ),
-            'singular_name'              => _x( 'Room type', 'taxonomy singular name', 'wa' ),
-            'search_items'               => __( 'Search asset class', 'wa' ),
-            'popular_items'              => __( 'Popular asset class', 'wa' ),
-            'all_items'                  => __( 'All Room types', 'wa' ),
+            'name'                       => _x( 'Room type', 'taxonomy general name', PLUGINNAME_DOMAIN ),
+            'singular_name'              => _x( 'Room type', 'taxonomy singular name', PLUGINNAME_DOMAIN ),
+            'search_items'               => __( 'Search asset class', PLUGINNAME_DOMAIN ),
+            'popular_items'              => __( 'Popular asset class', PLUGINNAME_DOMAIN ),
+            'all_items'                  => __( 'All Room types', PLUGINNAME_DOMAIN ),
             'parent_item'                => null,
             'parent_item_colon'          => null,
-            'edit_item'                  => __( 'Edit Room type', 'wa' ),
-            'update_item'                => __( 'Update Room type', 'wa' ),
-            'add_new_item'               => __( 'Add New Room type', 'wa' ),
-            'new_item_name'              => __( 'New Room type Name', 'wa' ),
-            'separate_items_with_commas' => __( 'Separate Room types with commas', 'wa' ),
-            'add_or_remove_items'        => __( 'Add or remove writers', 'wa' ),
-            'choose_from_most_used'      => __( 'Choose from the most used Room types', 'wa' ),
-            'not_found'                  => __( 'No Room types found.', 'wa' ),
-            'menu_name'                  => __( 'Room types', 'wa' ),
+            'edit_item'                  => __( 'Edit Room type', PLUGINNAME_DOMAIN ),
+            'update_item'                => __( 'Update Room type', PLUGINNAME_DOMAIN ),
+            'add_new_item'               => __( 'Add New Room type', PLUGINNAME_DOMAIN ),
+            'new_item_name'              => __( 'New Room type Name', PLUGINNAME_DOMAIN ),
+            'separate_items_with_commas' => __( 'Separate Room types with commas', PLUGINNAME_DOMAIN ),
+            'add_or_remove_items'        => __( 'Add or remove writers', PLUGINNAME_DOMAIN ),
+            'choose_from_most_used'      => __( 'Choose from the most used Room types', PLUGINNAME_DOMAIN ),
+            'not_found'                  => __( 'No Room types found.', PLUGINNAME_DOMAIN ),
+            'menu_name'                  => __( 'Room types', PLUGINNAME_DOMAIN ),
         );
 
         $args = array(
@@ -139,7 +146,7 @@ class PluginName{
             'show_admin_column'     => true,
             'update_count_callback' => '_update_post_term_count',
             'query_var'             => true,
-            'rewrite'               => array( 'slug' => __('Room-type', 'wa') ),
+            'rewrite'               => array( 'slug' => __('Room-type', PLUGINNAME_DOMAIN) ),
         );
 
         register_taxonomy( 'ch_room_type', array('ch_room', ''), $args );
@@ -154,11 +161,11 @@ class PluginName{
      */
     public function load_plugin_textdomain()
     {
-        $locale = apply_filters('plugin_locale', get_locale(), 'wa');
+        $locale = apply_filters('plugin_locale', get_locale(), PLUGINNAME_DOMAIN);
         $dir = trailingslashit(WP_LANG_DIR);
 
-        load_textdomain('cornerhotel', $dir . 'cornerhotel/cornerhotel-' . $locale . '.mo');
-        load_plugin_textdomain('cornerhotel', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        load_textdomain(PLUGINNAME_DOMAIN, $dir . PLUGINNAME_DOMAIN . DIRECTORY_SEPARATOR . PLUGINNAME_DOMAIN . '-' . $locale . '.mo');
+        load_plugin_textdomain(PLUGINNAME_DOMAIN, false, dirname(plugin_basename(__FILE__)) . DIRECTORY_SEPARATOR . 'languages');
     }
 
     

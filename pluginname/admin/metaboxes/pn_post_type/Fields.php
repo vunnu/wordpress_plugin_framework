@@ -20,7 +20,7 @@ class Fields{
     public function __construct()
     {
         $this->id = 'pn_posttype_fields';
-        $this->title = __('Post type fields', 'pn');
+        $this->title = __('Post type fields', PLUGINNAME_DOMAIN);
         $this->context = 'side';
         $this->priority = 'default';
         $this->post_types = array('pn_posttype');
@@ -39,7 +39,7 @@ class Fields{
         <div class="row">
             <div>
                 <label for="_ch_project_url">
-                    <?php echo __('Project url', 'pn'); ?>
+                    <?php echo __('Project url', PLUGINNAME_DOMAIN); ?>
                 </label>
                 <input class="text" value="<?php echo get_post_meta($post_id, '_ch_project_url', true); ?>" name="_ch_project_url">
             </div>

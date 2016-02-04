@@ -6,6 +6,7 @@
  * Time: 15:55
  */
 
+namespace PluginName;
 
 class Singleton
 {

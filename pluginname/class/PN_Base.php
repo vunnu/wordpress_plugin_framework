@@ -6,6 +6,7 @@
  * Time: 09:30
  */
 
+use PluginName;
 
 abstract class PN_Base extends Singleton
 {
@@ -13,6 +14,32 @@ abstract class PN_Base extends Singleton
     protected $id;
 
     protected static $post_type;
+
+    /**
+     * @param $property
+     * @return bool|mixed
+     * Getter for dynamic parameters
+     */
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->get_meta_value('_bk_'.$property);
+        }
+    }
+
+    /**
+     * @param $property
+     * @param $value
+     * @return $this
+     * Setter for dynamic parameters
+     */
+    public function __set($property, $value) {
+        if (property_exists($this, $property)) {
+            $this->$property = $value;
+        }
+
+        return $this;
+    }
 
 
     /**

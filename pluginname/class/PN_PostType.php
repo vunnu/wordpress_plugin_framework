@@ -7,7 +7,7 @@
  */
 
 
-class PN_Room extends PN_Base
+class PN_PostType extends PN_Base
 {
 
 
@@ -15,48 +15,8 @@ class PN_Room extends PN_Base
 
     public $post;
     
-    static $post_type = 'ch_room';
+    public static $post_type = 'pn_posttype';
 
-    private $room_main_color;
-
-    private $room_url;
-
-
-
-    /**
-     * @return mixed
-     */
-    public function get_room_url()
-    {
-        return $this->room_url;
-    }
-
-    /**
-     * @param mixed $room_url
-     */
-    public function set_room_url($room_url)
-    {
-        $this->room_url = $room_url;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function get_room_mainColor()
-    {
-
-        return $this->room_main_color;
-    }
-
-    /**
-     * @param mixed $room_main_color
-     */
-    public function set_room_mainColor($room_main_color)
-    {
-
-        $this->room_main_color = $room_main_color;
-    }
 
 
     /**
@@ -64,9 +24,7 @@ class PN_Room extends PN_Base
      */
     public function save()
     {
-
-        $this->save_meta_value('_ch_room_main_color', $this->get_room_mainColor());
-        $this->save_meta_value('_ch_room_url', $this->get_room_url());
+//        $this->save_meta_value('_ch_room_main_color', $this->get_room_mainColor());
     }
 
     /**
@@ -74,17 +32,18 @@ class PN_Room extends PN_Base
      */
     public function init()
     {
-
-        $this->set_room_mainColor($this->get_meta_value('_ch_room_main_color'));
-        $this->set_room_url($this->get_meta_value('_ch_room_url'));
+//        $this->set_room_mainColor($this->get_meta_value('_'.self::$post_type.'_main_color'));
     }
 
 
     /**
      * Getting list of objects list
      */
-    public function get_list_categorised($tax = 'ch_room_type')
+    public function get_list_categorised($tax)
     {
+        if(!$tax)
+            $tax = self::$post_type.'_type';
+
         $post_type = self::get_class_post_type();
 
         $tax_terms = get_terms( $tax, 'parent=0&orderby=name&order=ASC');

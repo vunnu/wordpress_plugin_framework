@@ -9,5 +9,5 @@ Author URI: nwagency.eu
 */
 
 
-
+require_once('../vendor/autoload.php');
 require_once('PluginName.class.php');

@@ -24,7 +24,7 @@ class Functionality{
 
     public function ch_manage_project_task_posts_columns($defaults)
     {
-        $defaults['ch_project'] = __('Project', 'pn');
+        $defaults['ch_project'] = __('Project', PLUGINNAME_DOMAIN);
 
         return $defaults;
     }

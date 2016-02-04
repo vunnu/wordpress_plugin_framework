@@ -33,7 +33,7 @@ class FunctionalityFilter{
             $projects = PN_Project::get_list();
 
             echo '<select name="project_id">';
-            echo '<option value="">' . __( 'All projects', 'pn' ) . '</option>';
+            echo '<option value="">' . __( 'All projects', PLUGINNAME_DOMAIN ) . '</option>';
             foreach( $projects as $project ) {
                 $selected = ( !empty( $_GET['project_id'] ) AND $_GET['project_id'] == $project->post->ID ) ? 'selected="selected"' : '';
                 echo '<option value="'.$project->post->ID.'" '.$selected.'>' . $project->post->post_title . '</option>';
