@@ -75,4 +75,4 @@ class Fields{
 
 }
 
-return new PN_Meta_Box_ProjectFields();
+return new Fields();

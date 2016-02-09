@@ -21,7 +21,7 @@ class PN_Column{
      */
     public function include_columns_handlers() {
 
-        include('pn_some_functionality/Functionality.php');
+        include('pn_post_type/Functionality.php');
 
     }
 

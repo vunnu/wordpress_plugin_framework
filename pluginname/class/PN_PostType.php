@@ -99,5 +99,3 @@ class PN_PostType extends PN_Base
         return self::$post_type;
     }
 }
-
-return PN_Room::getInstance();

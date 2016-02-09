@@ -6,7 +6,7 @@
  * Time: 09:30
  */
 
-use PluginName;
+use PluginName\Singleton;
 
 abstract class PN_Base extends Singleton
 {
