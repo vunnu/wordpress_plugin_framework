@@ -6,7 +6,7 @@
  * Time: 08:47
  */
 
-namespace PN_PostType;
+namespace pluginname;
 
 class Fields{
 

@@ -6,7 +6,7 @@
  * Time: 15:07
  */
 
-namespace PN_PostType;
+namespace pluginname;
 
 class Functionality{
 
