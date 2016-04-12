@@ -101,7 +101,7 @@ abstract class PN_Base extends Singleton
     {
         $param = '_sca_'.$key;
 
-        return delete_post_meta($this->id, $key);
+        return delete_post_meta($this->id, $param);
     }
 
 
